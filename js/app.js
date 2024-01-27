@@ -20,3 +20,37 @@ minus.addEventListener('click', ()=>{
      
     console.log('a');
     })
+
+
+
+    function generatePassword(length, includeUppercase, includeNumbers, includeSymbols) {
+        const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+        const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const numberChars = '0123456789';
+        const symbolChars = '!@#$%^&*()_-+=<>?';
+    
+        let allChars = lowercaseChars;
+        let password = '';
+    
+        if (includeUppercase) allChars += uppercaseChars;
+        if (includeNumbers) allChars += numberChars;
+        if (includeSymbols) allChars += symbolChars;
+    
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * allChars.length);
+            password += allChars.charAt(randomIndex);
+        }
+    
+        return password;
+    }
+    
+    // User preferences
+    const passwordLength = 12;
+    const includeUppercase = true;
+    const includeNumbers = true;
+    const includeSymbols = true;
+    
+    // Generate and display the password
+    const generatedPassword = generatePassword(passwordLength, includeUppercase, includeNumbers, includeSymbols);
+    console.log('Generated Password:', generatedPassword);
+
